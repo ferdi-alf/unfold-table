@@ -4,7 +4,7 @@ import { useExpandable } from "@/hooks/useExpandable";
 import { useTableData } from "@/hooks/useTableData";
 import { cn } from "@/lib/utils";
 import { DataTableProps } from "@/types/table";
-import { Fragment, useMemo, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -59,7 +59,7 @@ const DataTable = <TData extends Record<string, any>, TSubData = any>({
 
   const { expandedRows, toggleRow } = useExpandable<TSubData>();
 
-  useMemo(() => {
+  useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedSearch(searchQuery);
       setCurrentPage(1);
@@ -70,7 +70,6 @@ const DataTable = <TData extends Record<string, any>, TSubData = any>({
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    search?.onSearch?.(query);
   };
 
   const getAlignClass = (align?: "left" | "center" | "right") => {

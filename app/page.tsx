@@ -73,7 +73,6 @@ export default function Home() {
                   enabled: true,
                   placeholder: "Search users...",
                   debounceMs: 300,
-                  onSearch: handleSearch,
                 }}
                 striped
               />
@@ -135,7 +134,6 @@ export default function Home() {
                   enabled: true,
                   placeholder: "Search users...",
                   debounceMs: 300,
-                  onSearch: handleSearch,
                 }}
                 striped
                 loadingRows={8}

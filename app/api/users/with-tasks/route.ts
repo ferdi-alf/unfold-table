@@ -10,10 +10,20 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const limit = parseInt(searchParams.get("limit") || "15");
     const page = parseInt(searchParams.get("page") || "1");
+    const search = searchParams.get("search") || "";
 
-    const users = getUsersWithTask(30);
+    let users = getUsersWithTask(30);
 
-    const startIndex = (page - 1) % limit;
+    // filter berdasarkan search query kalo ada
+    if (search) {
+      users = users.filter(
+        (user) =>
+          user.name.toLowerCase().includes(search.toLowerCase()) ||
+          user.email.toLowerCase().includes(search.toLowerCase()) ||
+          user.username.toLowerCase().includes(search.toLowerCase())
+      );
+    }
+    const startIndex = (page - 1) * limit;
     const endIndex = startIndex + limit;
     const paginatedUsers = users.slice(startIndex, endIndex);
 

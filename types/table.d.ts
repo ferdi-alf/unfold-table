@@ -35,7 +35,6 @@ export interface SearchConfig {
   enabled?: boolean;
   placeholder?: string;
   debounceMs?: number;
-  onSearch?: (query: string) => void;
   serverConfig?: {
     queryParam?: string;
   };
