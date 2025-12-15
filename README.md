@@ -607,12 +607,6 @@ const TasksList = ({ tasks, loading, error }: TasksListProps) => {
 export default TasksList;
 ```
 
----
-
-## Advanced Examples
-
----
-
 ## Advanced Examples
 
 ```typescript
